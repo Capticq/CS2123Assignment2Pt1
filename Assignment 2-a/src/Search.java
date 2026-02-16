@@ -31,7 +31,9 @@ public class Search {
         for (Integer num : nums) {
             if (num == searchNum) {
                 long end = System.nanoTime();
-                System.out.println(end - start);
+                long systemTime = end - start;
+                double seconds = (double) systemTime / 1_000_000_000.0;
+                System.out.println(seconds);
             }
         }
     }
