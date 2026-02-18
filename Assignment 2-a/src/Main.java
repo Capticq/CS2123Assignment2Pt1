@@ -18,7 +18,7 @@ public class Main{
         System.out.println("\nBubble Sort:");
         ArrayList<Integer> sortedNums = sort.bubbleSort(randomNumbers.getRandNums("RandNumb.txt"));
         sort.writeSorted(sortedNums, "sortednumb.txt");
-        System.out.println(nums);
+        //System.out.println(nums);
 
         System.out.println("\nBinary Search:");
         search.binarySearch(sortedNums,1);
@@ -32,3 +32,4 @@ public class Main{
 
     }
 }
+
