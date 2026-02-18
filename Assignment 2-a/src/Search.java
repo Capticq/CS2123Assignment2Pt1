@@ -3,37 +3,41 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Search {
-    public ArrayList<Integer> nums =  new ArrayList<>();
+public class Search{
 
-    public ArrayList<Integer> getRandNums(String path){
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-            String line;
-
-            while ((line = br.readLine()) != null) {
-
-                line = line.trim();
-                String[] parts = line.split(",");
-                for (String part : parts) {
-                    nums.add(Integer.parseInt(part));
-                }
-            }
-
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-        }
-        return nums;
-    }
-
-    public void linearSearch(int searchNum){
+    public void linearSearch(ArrayList<Integer> arr, int searchNum){
         long start = System.nanoTime();
 
-        for (Integer num : nums) {
+        for (Integer num : arr) {
             if (num == searchNum) {
                 long end = System.nanoTime();
                 long systemTime = end - start;
                 double seconds = (double) systemTime / 1_000_000_000.0;
-                System.out.println(seconds);
+                System.out.println("Found " + searchNum + " in " + seconds + " seconds");
+            }
+        }
+    }
+
+    public void binarySearch(ArrayList<Integer> arr, int searchNum) {
+        long start = System.nanoTime();
+        int low = 0;
+        int high = arr.size() - 1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (arr.get(mid) == searchNum) {
+                long end = System.nanoTime();
+                long systemTime = end - start;
+                double seconds = (double) systemTime / 1_000_000_000.0;
+                System.out.println("Found " + searchNum + " in " + seconds + " seconds");
+            }
+
+            if (arr.get(mid) < searchNum) {
+                low = mid + 1;
+            }
+
+            else {
+                high = mid - 1;
             }
         }
     }
