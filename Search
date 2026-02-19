@@ -1,0 +1,47 @@
+package assignment_2_Part_I_CS_2123;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class Search{
+
+    public void linearSearch(ArrayList<Integer> arr, int searchNum){
+        long start = System.nanoTime();
+
+        for (Integer num : arr) {
+            if (num == searchNum) {
+                long end = System.nanoTime();
+                long systemTime = end - start;
+                double seconds = (double) systemTime / 1_000_000_000.0;
+                System.out.println("Found " + searchNum + " in " + seconds + " seconds");
+            }
+        }
+    }
+
+    public void binarySearch(ArrayList<Integer> arr, int searchNum) {
+        long start = System.nanoTime();
+        int low = 0;
+        int high = arr.size() - 1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (arr.get(mid) == searchNum) {
+                long end = System.nanoTime();
+                long systemTime = end - start;
+                double seconds = (double) systemTime / 1_000_000_000.0;
+                System.out.println("Found " + searchNum + " in " + seconds + " seconds");
+            }
+
+            if (arr.get(mid) < searchNum) {
+                low = mid + 1;
+            }
+
+            else {
+                high = mid - 1;
+            }
+        }
+    }
+
+}
